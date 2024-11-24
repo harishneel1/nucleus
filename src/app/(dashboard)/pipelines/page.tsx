@@ -2,8 +2,9 @@
 'use client';
 
 import { useState } from 'react';
-import { GitBranch, LayoutGrid, Play, Plus } from 'lucide-react';
+import { GitBranch, Play } from 'lucide-react';
 import MainPanel from '@/components/layout/MainPanel/MainPanel';
+import { List } from '@/components/common/List/List';
 
 interface Pipeline {
     id: string;
@@ -19,6 +20,15 @@ const mockPipelines: Pipeline[] = [
     {
         id: '1',
         name: 'ChatBot Pipeline for BITS Pilani',
+        owner: {
+            initials: 'h',
+            bgColor: 'bg-emerald-500'
+        },
+        updated: 'Nov 23'
+    },
+    {
+        id: '2',
+        name: 'The Souled Store Workflow',
         owner: {
             initials: 'h',
             bgColor: 'bg-emerald-500'
@@ -82,34 +92,13 @@ export default function PipelinesPage() {
             isAllSelected={isAllSelected}
         >
             <div className="divide-y">
-                {mockPipelines.map((pipeline) => (
-                    <div
-                        key={pipeline.id}
-                        className="flex items-center px-4 py-2 hover:bg-gray-50 group"
-                    >
-                        <div className="flex items-center space-x-4 flex-1">
-                            <input
-                                type="checkbox"
-                                className="h-4 w-4 rounded border-gray-300"
-                                checked={selectedPipelines.includes(pipeline.id)}
-                                onChange={() => handleSelectPipeline(pipeline.id)}
-                            />
-                            <span className="text-sm text-gray-900">
-                                {pipeline.name}
-                            </span>
-                        </div>
-                        <div className="w-32 flex items-center pl-2">
-                            <div className={`w-7 h-7 rounded-full bg-emerald-500 flex items-center justify-center text-white text-xs`}>
-                                h
-                            </div>
-                        </div>
-                        <div className="w-40 pl-2">
-                            <div className="w-32 text-sm text-gray-600">
-                                {pipeline.updated}
-                            </div>
-                        </div>
-                    </div>
-                ))}
+                <List
+                    items={mockPipelines}
+                    selectedItems={selectedPipelines}
+                    onSelectItem={handleSelectPipeline}
+                    showOwner={true}
+                    showUpdated={true}
+                />
             </div>
         </MainPanel>
     );
