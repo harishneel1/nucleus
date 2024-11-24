@@ -2,7 +2,7 @@
 'use client';
 
 import { useState } from 'react';
-import { GitBranch, LayoutGrid, Play } from 'lucide-react';
+import { GitBranch, LayoutGrid, Play, Plus } from 'lucide-react';
 import MainPanel from '@/components/layout/MainPanel/MainPanel';
 
 interface Pipeline {
@@ -34,28 +34,21 @@ export default function PipelinesPage() {
     const columns = [
         { key: 'name', label: 'Name', width: 'flex-1' },
         { key: 'owner', label: 'Owner', width: 'w-32' },
-        { key: 'updated', label: 'Updated', width: 'w-32' },
+        { key: 'updated', label: 'Updated', width: 'w-32' }
     ];
 
-    // Update the actions in PipelinesPage
     const actions = (
         <>
             <button
                 className="flex items-center h-8 px-3 gap-2 text-sm text-gray-600 hover:bg-gray-50 rounded-md"
             >
                 <Play className="w-4 h-4" />
-                <span>Run History</span>
-            </button>
-            <button
-                className="flex items-center h-8 px-3 gap-2 text-sm text-gray-600 hover:bg-gray-50 rounded-md"
-            >
-                <LayoutGrid className="w-4 h-4" />
-                <span>Display</span>
+                <span>View Run History</span>
             </button>
             <button
                 className="h-8 px-3 text-sm font-medium bg-violet-600 text-white rounded-md hover:bg-violet-700"
             >
-                New
+                <span>Create Pipeline</span>
             </button>
         </>
     );
@@ -92,25 +85,28 @@ export default function PipelinesPage() {
                 {mockPipelines.map((pipeline) => (
                     <div
                         key={pipeline.id}
-                        className="flex items-center gap-4 p-4 hover:bg-gray-50"
+                        className="flex items-center px-4 py-2 hover:bg-gray-50 group"
                     >
-                        <input
-                            type="checkbox"
-                            className="h-4 w-4 rounded border-gray-300"
-                            checked={selectedPipelines.includes(pipeline.id)}
-                            onChange={() => handleSelectPipeline(pipeline.id)}
-                        />
-                        <div className="flex-1">{pipeline.name}</div>
-                        <div className="w-32">
-                            <div className={`w-6 h-6 rounded-full ${pipeline.owner.bgColor} flex items-center justify-center text-white uppercase`}>
-                                {pipeline.owner.initials}
+                        <div className="flex items-center space-x-4 flex-1">
+                            <input
+                                type="checkbox"
+                                className="h-4 w-4 rounded border-gray-300"
+                                checked={selectedPipelines.includes(pipeline.id)}
+                                onChange={() => handleSelectPipeline(pipeline.id)}
+                            />
+                            <span className="text-sm text-gray-900">
+                                {pipeline.name}
+                            </span>
+                        </div>
+                        <div className="w-32 flex items-center pl-2">
+                            <div className={`w-7 h-7 rounded-full bg-emerald-500 flex items-center justify-center text-white text-xs`}>
+                                h
                             </div>
                         </div>
-                        <div className="w-32 flex items-center gap-2">
-                            <span>{pipeline.updated}</span>
-                            <button className="p-1 hover:bg-gray-100 rounded">
-                                <Play className="w-4 h-4 text-gray-600" />
-                            </button>
+                        <div className="w-40 pl-2">
+                            <div className="w-32 text-sm text-gray-600">
+                                {pipeline.updated}
+                            </div>
                         </div>
                     </div>
                 ))}

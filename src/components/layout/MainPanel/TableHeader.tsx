@@ -37,9 +37,11 @@ export default function TableHeader({
                 <div
                     key={column.key}
                     className={`${column.width || 'flex-1'} ${column.align === 'right' ? 'text-right' : ''
-                        }`}
+                        } `}
                 >
-                    {column.label}
+                    <span className="font-medium text-gray-900">
+                        {column.label}
+                    </span>
                 </div>
             ))}
             <button className="p-1 ml-2 hover:bg-gray-50 rounded">
