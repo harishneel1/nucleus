@@ -39,8 +39,8 @@ export default function NewPipelinePage() {
         <div className="flex flex-col h-full">
             <TopBar
                 breadcrumbItems={[
-                    { label: 'Pipelines' },
-                    { label: 'Create Pipeline' }
+                    { label: 'Pipelines', href: '/pipelines' },
+                    { label: 'Create Pipeline', href: '/pipelines/new' }
                 ]}
                 actions={actions}
             />

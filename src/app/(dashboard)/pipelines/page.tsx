@@ -93,7 +93,7 @@ export default function PipelinesPage() {
     return (
         <div className="flex flex-col h-full">
             <TopBar
-                breadcrumbItems={[{ label: 'Pipelines' }]}
+                breadcrumbItems={[{ label: 'Pipelines', href: '/pipelines' }]}
                 actions={actions}
             />
             <TableHeader

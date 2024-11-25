@@ -1,12 +1,15 @@
-// components/layout/MainPanel/Breadcrumb.tsx
+// components/common/Breadcrumb.tsx
+
+import Link from 'next/link';
 import { ChevronRight } from 'lucide-react';
 
+interface BreadcrumbItem {
+    label: string;
+    href?: string;
+}
+
 interface BreadcrumbProps {
-    items: {
-        icon?: React.ReactNode;
-        label: string;
-        href?: string;
-    }[];
+    items: BreadcrumbItem[];
 }
 
 export default function Breadcrumb({ items }: BreadcrumbProps) {
@@ -15,10 +18,18 @@ export default function Breadcrumb({ items }: BreadcrumbProps) {
             {items.map((item, index) => (
                 <div key={index} className="flex items-center gap-2">
                     {index > 0 && <ChevronRight className="w-4 h-4 text-gray-400" />}
-                    <div className="flex items-center gap-2">
-                        {item.icon && <div className="w-5 h-5">{item.icon}</div>}
-                        <span className="text-xs font-semibold text-gray-700 uppercase tracking-wider">{item.label}</span>
-                    </div>
+                    {item.href ? (
+                        <Link
+                            href={item.href}
+                            className="text-xs font-medium text-gray-600 hover:text-gray-900 uppercase tracking-wide transition-colors text-xs font-semibold text-gray-700 uppercase tracking-wider"
+                        >
+                            {item.label}
+                        </Link>
+                    ) : (
+                        <span className="text-xs font-medium text-gray-900 uppercase tracking-wide text-xs font-semibold text-gray-700 uppercase tracking-wider">
+                            {item.label}
+                        </span>
+                    )}
                 </div>
             ))}
         </div>
