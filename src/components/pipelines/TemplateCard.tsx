@@ -20,8 +20,8 @@ export default function TemplateCard({ template }: TemplateCardProps) {
         <button
             onClick={handleClick}
             className="w-full flex flex-col p-4 rounded-lg border border-gray-200 
-                     hover:border-violet-200 hover:shadow-sm transition-all
-                     bg-white group h-[160px] justify-between"
+         hover:border-violet-200 hover:shadow-sm transition-all
+         bg-white group h-[180px] justify-between"
         >
             <div className="flex items-start gap-3">
                 {/* Icon and Content */}
@@ -40,10 +40,14 @@ export default function TemplateCard({ template }: TemplateCardProps) {
             </div>
 
             {/* Created by - Now consistently at bottom */}
-            <div className="mt-auto pt-3 flex items-center border-t border-gray-100">
+            <div className="mt-auto pt-4 flex items-center justify-between border-t border-gray-100">
                 <span className="text-xs text-gray-500">
                     Created by: {template.createdBy}
                 </span>
+                <button className="text-xs text-violet-600 font-medium hover:bg-violet-50 rounded-md 
+                 px-2.5 py-1.5 transition-colors opacity-0 group-hover:opacity-100 ml-4">
+                    Use template →
+                </button>
             </div>
         </button>
     );
