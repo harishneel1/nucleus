@@ -22,13 +22,13 @@ export default function NewPipelinePage() {
         <div className="flex items-center gap-2">
             <button
                 onClick={handleBackClick}
-                className="h-8 px-3 text-sm text-gray-600 hover:bg-gray-50 rounded-md"
+                className="h-8 px-3 text-xs hover:bg-gray-50 rounded-md font-semibold uppercase tracking-wider text-gray-600"
             >
                 Back to Pipelines
             </button>
             <button
                 onClick={handleStartBlank}
-                className="h-8 px-3 text-sm font-medium bg-violet-600 text-white rounded-md hover:bg-violet-700"
+                className="h-8 px-3 text-xs bg-violet-600 text-white hover:bg-violet-700 rounded-md font-semibold uppercase tracking-wider"
             >
                 Start Blank
             </button>
