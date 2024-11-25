@@ -4,6 +4,7 @@
 import { useEffect, useState } from 'react';
 import { templates } from '@/constants/pipelineTemplates';
 import TemplateCard from './TemplateCard';
+import CreateFromScratchBanner from './CreateFromScratchBanner';
 import { Template } from '@/types/pipeline';
 
 interface TemplateGridProps {
@@ -52,10 +53,15 @@ export default function TemplateGrid({
     }
 
     return (
-        <div className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-4">
-            {filteredTemplates.map(template => (
-                <TemplateCard key={template.id} template={template} />
-            ))}
+        <div className="space-y-4">
+            {searchQuery.length === 0 && selectedCategories.length === 0 && (
+                <CreateFromScratchBanner />
+            )}
+            <div className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-4">
+                {filteredTemplates.map(template => (
+                    <TemplateCard key={template.id} template={template} />
+                ))}
+            </div>
         </div>
     );
 }
