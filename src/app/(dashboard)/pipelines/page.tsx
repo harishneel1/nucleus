@@ -4,8 +4,9 @@ import { useState } from 'react';
 import { Play } from 'lucide-react';
 import TopBar from '@/components/common/TopBar';
 import TableHeader from '@/components/common/TableHeader';
-import Breadcrumb from '@/components/common/Breadcrumb';
 import { List } from '@/components/common/List/List';
+import { useRouter } from 'next/navigation';
+
 
 interface Pipeline {
     id: string;
@@ -41,12 +42,18 @@ const mockPipelines: Pipeline[] = [
 export default function PipelinesPage() {
     const [selectedPipelines, setSelectedPipelines] = useState<string[]>([]);
     const [isAllSelected, setIsAllSelected] = useState(false);
+    const router = useRouter();
+
 
     const columns = [
         { key: 'name', label: 'Name', width: 'flex-1' },
         { key: 'owner', label: 'Owner', width: 'w-32' },
         { key: 'updated', label: 'Updated', width: 'w-32' }
     ];
+
+    const handleCreatePipeline = () => {
+        router.push('/pipelines/new');
+    };
 
     const actions = (
         <>
@@ -58,6 +65,8 @@ export default function PipelinesPage() {
             </button>
             <button
                 className="h-8 px-3 text-sm font-medium bg-violet-600 text-white rounded-md hover:bg-violet-700"
+                onClick={handleCreatePipeline}
+
             >
                 <span>Create Pipeline</span>
             </button>
