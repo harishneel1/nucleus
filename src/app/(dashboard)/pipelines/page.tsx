@@ -1,9 +1,10 @@
-// PipeLines List page
 'use client';
 
 import { useState } from 'react';
-import { GitBranch, Play } from 'lucide-react';
-import MainPanel from '@/components/layout/MainPanel/MainPanel';
+import { Play } from 'lucide-react';
+import TopBar from '@/components/common/TopBar';
+import TableHeader from '@/components/common/TableHeader';
+import Breadcrumb from '@/components/common/Breadcrumb';
 import { List } from '@/components/common/List/List';
 
 interface Pipeline {
@@ -81,25 +82,28 @@ export default function PipelinesPage() {
     };
 
     return (
-        <MainPanel
-            breadcrumbItems={[
-                { icon: <GitBranch className="w-5 h-5" />, label: 'Pipelines' }
-            ]}
-            actions={actions}
-            columns={columns}
-            showCheckbox
-            onSelectAll={handleSelectAll}
-            isAllSelected={isAllSelected}
-        >
-            <div className="divide-y">
-                <List
-                    items={mockPipelines}
-                    selectedItems={selectedPipelines}
-                    onSelectItem={handleSelectPipeline}
-                    showOwner={true}
-                    showUpdated={true}
-                />
+        <div className="flex flex-col h-full">
+            <TopBar
+                breadcrumb={<Breadcrumb items={[{ label: 'Pipelines' }]} />}
+                actions={actions}
+            />
+            <TableHeader
+                columns={columns}
+                showCheckbox
+                onSelectAll={handleSelectAll}
+                isAllSelected={isAllSelected}
+            />
+            <div className="flex-1 overflow-auto">
+                <div className="divide-y">
+                    <List
+                        items={mockPipelines}
+                        selectedItems={selectedPipelines}
+                        onSelectItem={handleSelectPipeline}
+                        showOwner={true}
+                        showUpdated={true}
+                    />
+                </div>
             </div>
-        </MainPanel>
+        </div>
     );
 }
