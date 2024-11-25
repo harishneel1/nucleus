@@ -129,7 +129,7 @@ export default function Sidebar() {
                             <Tooltip.Root>
                                 <Tooltip.Trigger asChild>
                                     <div className="w-6 h-6 bg-violet-600 rounded flex items-center justify-center text-white text-sm flex-shrink-0">
-                                        VS
+                                        HN
                                     </div>
                                 </Tooltip.Trigger>
                                 <Tooltip.Portal>
@@ -146,7 +146,7 @@ export default function Sidebar() {
                             <>
                                 <div className="flex items-center gap-2">
                                     <div className="w-6 h-6 bg-violet-600 rounded flex items-center justify-center text-white text-sm flex-shrink-0">
-                                        VS
+                                        HN
                                     </div>
                                     <span className="text-sm font-medium transition-opacity duration-300">
                                         Personal
