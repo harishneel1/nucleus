@@ -54,9 +54,7 @@ export default function TemplateGrid({
 
     return (
         <div className="space-y-4">
-            {searchQuery.length === 0 && selectedCategories.length === 0 && (
-                <CreateFromScratchBanner />
-            )}
+            <CreateFromScratchBanner />
             <div className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-4">
                 {filteredTemplates.map(template => (
                     <TemplateCard key={template.id} template={template} />
