@@ -58,13 +58,12 @@ export default function PipelinesPage() {
     const actions = (
         <>
             <button
-                className="flex items-center h-8 px-3 gap-2 text-sm text-gray-600 hover:bg-gray-50 rounded-md"
+                className="h-8 px-3 text-xs hover:bg-gray-50 rounded-md font-semibold uppercase tracking-wider text-gray-600"
             >
-                <Play className="w-4 h-4" />
                 <span>View Run History</span>
             </button>
             <button
-                className="h-8 px-3 text-sm font-medium bg-violet-600 text-white rounded-md hover:bg-violet-700"
+                className="h-8 px-3 text-xs bg-violet-600 text-white hover:bg-violet-700 rounded-md font-semibold uppercase tracking-wider"
                 onClick={handleCreatePipeline}
 
             >
