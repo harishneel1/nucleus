@@ -148,7 +148,7 @@ export default function Sidebar() {
                                     <div className="w-6 h-6 bg-violet-600 rounded flex items-center justify-center text-white text-sm flex-shrink-0">
                                         HN
                                     </div>
-                                    <span className="text-sm font-medium transition-opacity duration-300">
+                                    <span className="text-sm font-medium transition-opacity duration-300 ">
                                         Personal
                                     </span>
                                 </div>

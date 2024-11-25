@@ -25,8 +25,10 @@ export default function FilterPanel({ onCategoriesChange }: FilterPanelProps) {
 
     return (
         <div className="flex flex-col">
-            <div className="text-sm font-medium text-gray-700 mb-2">Categories</div>
-            <div className="flex flex-col space-y-0.5">
+            <h3 className="text-xs font-semibold text-gray-700 uppercase tracking-wider mb-3 px-3">
+                Categories
+            </h3>
+            <div className="space-y-1 pb-2">
                 {pipelineCategories.map(category => (
                     <CategoryItem
                         key={category.id}
