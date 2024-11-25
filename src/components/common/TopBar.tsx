@@ -19,7 +19,7 @@ export default function TopBar({ breadcrumbItems, actions }: TopBarProps) {
     const isSidebarCollapsed = useSelector((state) => state.ui.isSidebarCollapsed)
 
     return (
-        <div className="flex items-center justify-between p-4 border-b text-gray-900 font-semibold bg-white">
+        <div className="flex items-center justify-between py-[8px] px-6 border-b  bg-white">
             <div className="flex items-center gap-3">
                 <button
                     onClick={() => dispatch(toggleSidebar())}

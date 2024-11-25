@@ -22,31 +22,32 @@ export default function TableHeader({
     isAllSelected
 }: TableHeaderProps) {
     return (
-        <div className="sticky top-0 flex items-center px-4 py-2 border-b bg-white text-sm text-gray-600">
-            {showCheckbox && (
-                <div className="flex items-center h-4 mr-4">
-                    <input
-                        type="checkbox"
-                        className="h-4 w-4 rounded border-gray-300 text-violet-600 focus:ring-violet-500"
-                        checked={isAllSelected}
-                        onChange={onSelectAll}
-                    />
-                </div>
-            )}
-            {columns.map((column) => (
-                <div
-                    key={column.key}
-                    className={`${column.width || 'flex-1'} ${column.align === 'right' ? 'text-right' : ''
-                        } `}
-                >
-                    <span className="font-medium text-gray-900">
-                        {column.label}
-                    </span>
-                </div>
-            ))}
-            <button className="p-1 ml-2 hover:bg-gray-50 rounded">
-                <Plus className="w-4 h-4 text-gray-600" />
-            </button>
+        <div className="sticky top-0 bg-white border-b">
+            <div className="flex items-center h-11 px-4 bg-gray-50/80 backdrop-blur-sm">
+                {showCheckbox && (
+                    <div className="flex items-center h-4 mr-4">
+                        <input
+                            type="checkbox"
+                            className="h-4 w-4 rounded border-gray-300 text-violet-600 focus:ring-violet-500 cursor-pointer"
+                            checked={isAllSelected}
+                            onChange={onSelectAll}
+                        />
+                    </div>
+                )}
+                {columns.map((column) => (
+                    <div
+                        key={column.key}
+                        className={`${column.width || 'flex-1'} ${column.align === 'right' ? 'text-right' : ''}`}
+                    >
+                        <span className="text-sm font-medium text-gray-600 select-none">
+                            {column.label}
+                        </span>
+                    </div>
+                ))}
+                <button className="p-1.5 hover:bg-white/80 rounded-md transition-colors ml-2">
+                    <Plus className="w-4 h-4 text-gray-600" />
+                </button>
+            </div>
         </div>
     );
 }
