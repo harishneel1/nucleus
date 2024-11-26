@@ -3,7 +3,7 @@
 
 import { useRouter } from 'next/navigation';
 import TopBar from '@/components/common/TopBar';
-import NewPipelineContent from '@/components/pipelines/NewPipelineContent';
+import NewPipelineContent from '@/components/pipelines/CreateNewPipelinePage/NewPipelineContent';
 
 export default function NewPipelinePage() {
     const router = useRouter();
@@ -13,7 +13,6 @@ export default function NewPipelinePage() {
     };
 
     const handleStartBlank = () => {
-        // Generate a unique ID - in real app this might come from an API
         const uniqueId = Math.random().toString(36).substr(2, 9);
         router.push(`/pipelines/${uniqueId}`);
     };
