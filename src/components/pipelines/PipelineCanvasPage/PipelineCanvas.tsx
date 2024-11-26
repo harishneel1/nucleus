@@ -1,7 +1,7 @@
 // components/pipelines/PipelineCanvas.tsx
 'use client';
 
-import { useState, useCallback } from 'react';
+import { useCallback } from 'react';
 import ReactFlow, {
     Background,
     Controls,
@@ -31,9 +31,12 @@ export default function PipelineCanvas() {
             const type = event.dataTransfer.getData('application/reactflow');
             if (typeof type === 'undefined' || !type) return;
 
+            const reactFlowBounds = document.querySelector('.react-flow')?.getBoundingClientRect();
+            if (!reactFlowBounds) return;
+
             const position = {
-                x: event.clientX - 240,
-                y: event.clientY - 60
+                x: event.clientX - reactFlowBounds.left,
+                y: event.clientY - reactFlowBounds.top
             };
 
             const newNode: Node = {
@@ -54,24 +57,25 @@ export default function PipelineCanvas() {
     }, []);
 
     return (
-        <div className="flex h-full">
+        <div className="h-full">
+            <ReactFlow
+                nodes={nodes}
+                edges={edges}
+                onNodesChange={onNodesChange}
+                onEdgesChange={onEdgesChange}
+                onConnect={onConnect}
+                onDrop={onDrop}
+                onDragOver={onDragOver}
+                fitView
+                className="bg-gray-50"
+            >
+                <Background gap={16} size={1} />
+                <Controls
+                    position="bottom-left"
+                    className="translate-x-2 -translate-y-2"
+                />
+            </ReactFlow>
             <NodePalette />
-            <div className="flex-1">
-                <ReactFlow
-                    nodes={nodes}
-                    edges={edges}
-                    onNodesChange={onNodesChange}
-                    onEdgesChange={onEdgesChange}
-                    onConnect={onConnect}
-                    onDrop={onDrop}
-                    onDragOver={onDragOver}
-                    fitView
-                    className="bg-gray-50"
-                >
-                    <Background gap={16} size={1} />
-                    <Controls />
-                </ReactFlow>
-            </div>
         </div>
     );
 }
