@@ -14,6 +14,7 @@ import ReactFlow, {
     useEdgesState
 } from 'reactflow';
 import 'reactflow/dist/style.css';
+import NodePalette from './NodePalette';
 
 export default function PipelineCanvas() {
     const [nodes, setNodes, onNodesChange] = useNodesState([]);
@@ -53,8 +54,9 @@ export default function PipelineCanvas() {
     }, []);
 
     return (
-        <div className="flex flex-col h-full">
-            <div className="flex-1 relative">
+        <div className="flex h-full">
+            <NodePalette />
+            <div className="flex-1">
                 <ReactFlow
                     nodes={nodes}
                     edges={edges}
