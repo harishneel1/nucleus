@@ -15,9 +15,29 @@ import ReactFlow, {
 } from 'reactflow';
 import 'reactflow/dist/style.css';
 import NodePalette from './NodePalette';
+import InputNode from '@/components/nodes/InputNode/InputNode';
+
+const nodeTypes = {
+    input: InputNode
+}
+
+const initialNodes = [
+    {
+        id: '1',
+        type: 'input',
+        position: { x: 100, y: 100 },
+        data: {
+            label: 'Input Node',
+            type: 'input',
+            fieldName: 'userInput',
+            fieldType: 'text' as const,
+            defaultValue: ''
+        }
+    }
+];
 
 export default function PipelineCanvas() {
-    const [nodes, setNodes, onNodesChange] = useNodesState([]);
+    const [nodes, setNodes, onNodesChange] = useNodesState(initialNodes);
     const [edges, setEdges, onEdgesChange] = useEdgesState([]);
 
     const onConnect = useCallback((params: Edge | Connection) => {
@@ -60,6 +80,7 @@ export default function PipelineCanvas() {
         <div className="h-full">
             <ReactFlow
                 nodes={nodes}
+                nodeTypes={nodeTypes}
                 edges={edges}
                 onNodesChange={onNodesChange}
                 onEdgesChange={onEdgesChange}
