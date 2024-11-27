@@ -29,7 +29,7 @@ const initialNodes = [
         data: {
             label: 'Input Node',
             type: 'input',
-            fieldName: 'userInput',
+            fieldName: 'User Prompt',
             fieldType: 'text' as const,
             defaultValue: ''
         }

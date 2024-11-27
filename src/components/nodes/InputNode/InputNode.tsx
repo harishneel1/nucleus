@@ -77,7 +77,7 @@ export default function InputNode({ id, data, selected, onChange, onDelete }: In
                             onChange={(e) => onChange?.({ fieldName: e.target.value })}
                             placeholder="input_1"
                             maxLength={50}
-                            className="w-full px-2 h-7 text-[13px] rounded-md border border-gray-200 
+                            className="w-full px-2 h-7 text-[12px] rounded-md border border-gray-200 
              focus:outline-none focus:ring-1 focus:ring-violet-500/20 focus:border-violet-500"
                         />
                         {!isFieldNameValid && (
@@ -95,7 +95,7 @@ export default function InputNode({ id, data, selected, onChange, onDelete }: In
 
                 {/* Type Section */}
                 <div>
-                    <label className="text-[10px] uppercase tracking-wider font-medium text-gray-500 mb-1.5 block">
+                    <label className="text-[10px] uppercase tracking-wider font-medium text-gray-500 mb-1 block">
                         Type
                     </label>
                     <div className="relative">
@@ -103,7 +103,7 @@ export default function InputNode({ id, data, selected, onChange, onDelete }: In
                             value={data.fieldType}
                             onChange={(e) => onChange?.({ fieldType: e.target.value as InputNodeData['fieldType'] })}
                             className={cn(
-                                "w-full h-8 pl-2 pr-8 text-sm rounded-md",
+                                "w-full h-7 pl-2 pr-8 text-[12px] rounded-md",
                                 "border border-gray-200 hover:border-gray-300",
                                 "focus:outline-none focus:ring-2 focus:ring-violet-500/20 focus:border-violet-500",
                                 "bg-white cursor-pointer appearance-none",
